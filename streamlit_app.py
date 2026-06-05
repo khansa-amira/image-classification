@@ -23,7 +23,7 @@ def load_model_from_drive(file_id):
 # ====================================================================
 # PENTING: Ganti teks di bawah ini dengan ID File Google Drive Anda!
 # ====================================================================
-GOOGLE_DRIVE_FILE_ID = 'https://drive.google.com/file/d/1KEFv42CHGuDSwHuc9nbzsXexHZVTWxJY/view?usp=sharing'
+GOOGLE_DRIVE_FILE_ID = 'https://drive.google.com/file/d/1mZO-sDMrG4muobSGu1EknZBFI7uZCr-O/view?usp=sharing'
 
 # Memuat model menggunakan fungsi cache
 model = load_model_from_drive(GOOGLE_DRIVE_FILE_ID)
