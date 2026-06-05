@@ -5,29 +5,18 @@ import tensorflow as tf
 import gdown
 import os
 
-# Fungsi untuk mengunduh dan memuat model dari Google Drive
 @st.cache_resource
 def load_model_from_drive(file_id):
-    # Nama file lokal tempat menyimpan model di server Streamlit
-    # Ubah ekstensi ke .h5 jika model Anda berformat .h5
-    output_model_path = 'model_hewan.h5' 
-    
-    # Jika file model belum ada di server, unduh dari Google Drive
+    output_model_path = 'model_hewan.keras'
     if not os.path.exists(output_model_path):
-        with st.spinner('Sedang mengunduh model dari Google Drive, mohon tunggu...'):
+        with st.spinner('Sedang mengunduh model, mohon tunggu...'):
             url = f'https://drive.google.com/uc?id={file_id}'
-            gdown.download(url, output_model_path, quiet=False)
-            
+            gdown.download(url, output_model_path, quiet=False, fuzzy=True)
     return tf.keras.models.load_model(output_model_path)
 
-# ====================================================================
-# PENTING: Ganti teks di bawah ini dengan ID File Google Drive Anda!
-# ====================================================================
-GOOGLE_DRIVE_FILE_ID = 'https://drive.google.com/file/d/1mZO-sDMrG4muobSGu1EknZBFI7uZCr-O/view?usp=sharing'
+GOOGLE_DRIVE_FILE_ID = '1mZO-sDMrG4muobSGu1EknZBFI7uZCr-O'
 
-# Memuat model menggunakan fungsi cache
 model = load_model_from_drive(GOOGLE_DRIVE_FILE_ID)
-
 class_names = ['kucing', 'ikan koi']
 
 st.title("Klasifikasi Gambar Hewan")
